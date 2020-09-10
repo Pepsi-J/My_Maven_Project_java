@@ -1,5 +1,7 @@
 package com.ccdc.activemq;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import javax.jms.Connection;
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
@@ -10,7 +12,7 @@ import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 class Sender_Producer_Test {
 	public static final String USERNAME = ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
@@ -56,7 +58,8 @@ class Sender_Producer_Test {
 	public static void Send_Message(char c) throws JMSException {
 		for (int i = 1; i <= 10; i++) {
 			// 7.创建消息
-			TextMessage message = session.createTextMessage("生产者发送的消息：" + (c=='q'?"queueMessage.No":"topicMessage.No") + i);
+			TextMessage message = session
+					.createTextMessage("生产者发送的消息：" + (c == 'q' ? "queueMessage.No" : "topicMessage.No") + i);
 			message.setJMSMessageID(String.valueOf(i));
 			// 8.发送消息
 			producer.send(message);
@@ -64,12 +67,12 @@ class Sender_Producer_Test {
 	}
 
 	@Test
-	void testProducer() throws JMSException {
-		char c='t';
+	public void testProducer() throws JMSException {
+		char c = 'q';
 		// 创建MQ并启动
 		start(c);
 		// 发送消息
-		Send_Message(c);//queue ? topic
+		Send_Message(c);// q:queue / c:topic
 		// 关闭资源
 		stop();
 

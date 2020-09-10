@@ -1,5 +1,7 @@
 package com.ccdc.activemq;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.io.IOException;
 
 import javax.jms.Connection;
@@ -14,7 +16,7 @@ import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 class Receiver_Consumer_Test {
 	public static final String USERNAME = ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
@@ -57,7 +59,7 @@ class Receiver_Consumer_Test {
 		connection.close();
 	}
 
-	//异步阻塞
+	// 异步阻塞
 	public static void Recrive_Message() throws JMSException {
 		while (true) {
 			// 7.接收消息
@@ -105,7 +107,7 @@ class Receiver_Consumer_Test {
 	}
 
 	@Test
-	void testListener1() throws JMSException, IOException {
+	public void testListener1() throws JMSException, IOException {
 		// 创建MQ并启动
 		start('t');
 		// 接收消息
@@ -115,7 +117,7 @@ class Receiver_Consumer_Test {
 	}
 
 	@Test
-	void testListener2() throws JMSException, IOException {
+	public void testListener2() throws JMSException, IOException {
 		// 创建MQ并启动
 		start('t');
 		// 接收消息
@@ -125,7 +127,7 @@ class Receiver_Consumer_Test {
 	}
 
 	@Test
-	void testNoListener() throws JMSException, IOException {
+	public void testNoListener() throws JMSException, IOException {
 		// 创建MQ并启动
 		start('q');
 		// 接收消息
