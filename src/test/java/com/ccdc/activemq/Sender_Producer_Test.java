@@ -57,6 +57,7 @@ class Sender_Producer_Test {
 		for (int i = 1; i <= 10; i++) {
 			// 7.创建消息
 			TextMessage message = session.createTextMessage("生产者发送的消息：" + (c=='q'?"queueMessage.No":"topicMessage.No") + i);
+			message.setJMSMessageID(String.valueOf(i));
 			// 8.发送消息
 			producer.send(message);
 		}
