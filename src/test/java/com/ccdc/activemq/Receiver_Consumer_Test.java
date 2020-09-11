@@ -1,11 +1,10 @@
 package com.ccdc.activemq;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.IOException;
 
 import javax.jms.Connection;
 import javax.jms.JMSException;
+import javax.jms.MapMessage;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
@@ -63,10 +62,10 @@ class Receiver_Consumer_Test {
 	public static void Recrive_Message() throws JMSException {
 		while (true) {
 			// 7.接收消息
-			TextMessage message = (TextMessage) consumer.receive(5000L);
+			TextMessage textMessage = (TextMessage) consumer.receive(5000L);
 			// 8.返回消息
-			if (null != message) {
-				System.out.println("消费者接收到的消息：" + message.getText());
+			if (null != textMessage) {
+				System.out.println("消费者接收到的消息：" + textMessage.getText());
 			} else {
 				break;
 			}
@@ -101,6 +100,15 @@ class Receiver_Consumer_Test {
 						e.printStackTrace();
 					}
 				}
+				if (null != message && message instanceof MapMessage) {
+					MapMessage mapMessage = (MapMessage) message;
+					try {
+						System.out.println("消费者接收到的消息：" + mapMessage.getString("k1"));
+						System.out.println("消费者接收到的消息属性：" + mapMessage.getStringProperty("k2"));
+					} catch (JMSException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		});
 		System.in.read();
@@ -109,7 +117,7 @@ class Receiver_Consumer_Test {
 	@Test
 	public void testListener1() throws JMSException, IOException {
 		// 创建MQ并启动
-		start('t');
+		start('q');
 		// 接收消息
 		setListener1();
 		// 关闭资源

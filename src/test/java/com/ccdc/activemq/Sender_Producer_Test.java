@@ -1,9 +1,8 @@
 package com.ccdc.activemq;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import javax.jms.Connection;
 import javax.jms.JMSException;
+import javax.jms.MapMessage;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
@@ -56,13 +55,23 @@ class Sender_Producer_Test {
 	}
 
 	public static void Send_Message(char c) throws JMSException {
-		for (int i = 1; i <= 10; i++) {
-			// 7.创建消息
-			TextMessage message = session
-					.createTextMessage("生产者发送的消息：" + (c == 'q' ? "queueMessage.No" : "topicMessage.No") + i);
-			message.setJMSMessageID(String.valueOf(i));
+		for (int i = 1; i <= 3; i++) {
+			// 7.创建消息--TextMessage
+			TextMessage textMessage = session.createTextMessage((c == 'q' ? "queueMessage.No" : "topicMessage.No") + i);
+//			textMessage.setJMSMessageID(String.valueOf(i));//消息ID
+//			textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT);//持久化模式
+//			textMessage.setJMSDestination(null);//目的地
+//			textMessage.setJMSExpiration(0);//过期时间
+//			textMessage.setJMSPriority(i);//优先级
 			// 8.发送消息
-			producer.send(message);
+			producer.send(textMessage);
+
+			// 创建消息--MapMessage
+			MapMessage mapMessage = session.createMapMessage();
+			mapMessage.setString("k" + i, "mapMessageV" + i);//设置消息
+			mapMessage.setStringProperty("k2", "vipp");//设置熟悉
+			// 发送消息
+			producer.send(mapMessage);
 		}
 	}
 
