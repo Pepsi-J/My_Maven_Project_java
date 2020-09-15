@@ -58,11 +58,11 @@ class Sender_Producer_Test {
 		for (int i = 1; i <= 3; i++) {
 			// 7.创建消息--TextMessage
 			TextMessage textMessage = session.createTextMessage((c == 'q' ? "queueMessage.No" : "topicMessage.No") + i);
-//			textMessage.setJMSMessageID(String.valueOf(i));//消息ID
-//			textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT);//持久化模式
-//			textMessage.setJMSDestination(null);//目的地
-//			textMessage.setJMSExpiration(0);//过期时间
-//			textMessage.setJMSPriority(i);//优先级
+//			textMessage.setJMSMessageID(String.valueOf(i)); //消息ID
+//			textMessage.setJMSDeliveryMode(DeliveryMode.PERSISTENT); //持久化模式，默认持久化
+//			textMessage.setJMSDestination(null); //目的地
+//			textMessage.setJMSExpiration(0); //过期时间
+//			textMessage.setJMSPriority(i); //优先级
 			// 8.发送消息
 			producer.send(textMessage);
 
