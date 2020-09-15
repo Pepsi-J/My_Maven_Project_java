@@ -13,7 +13,7 @@ import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.jupiter.api.Test;
 
-class Sender_Producer_Test {
+class JMSSender_Producer {
 	public static final String USERNAME = ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
 	public static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码
 	public static final String BROKERURL = "tcp://192.168.43.69:61616";
