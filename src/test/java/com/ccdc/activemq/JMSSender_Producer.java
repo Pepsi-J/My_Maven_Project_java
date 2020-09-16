@@ -1,6 +1,7 @@
 package com.ccdc.activemq;
 
 import javax.jms.Connection;
+import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
 import javax.jms.MessageProducer;
@@ -16,7 +17,8 @@ import org.junit.jupiter.api.Test;
 class JMSSender_Producer {
 	public static final String USERNAME = ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
 	public static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码
-	public static final String BROKERURL = "tcp://192.168.241.110:61616";
+//	public static final String BROKERURL = "tcp://192.168.241.110:61616";
+	public static final String BROKERURL = "tcp://localhost:61616";
 	public static final String QUEUE_NAME = "testQueue";
 	public static final String TOPIC_NAME = "testTopic";
 	public static ActiveMQConnectionFactory factory;
@@ -67,11 +69,11 @@ class JMSSender_Producer {
 			producer.send(textMessage);
 
 			// 创建消息--MapMessage
-			MapMessage mapMessage = session.createMapMessage();
-			mapMessage.setString("k" + i, "mapMessageV" + i);//设置消息
-			mapMessage.setStringProperty("k2", "vipp");//设置熟悉
+//			MapMessage mapMessage = session.createMapMessage();
+//			mapMessage.setString("k" + i, "mapMessageV" + i);//设置消息
+//			mapMessage.setStringProperty("k2", "vipp");//设置属性
 			// 发送消息
-			producer.send(mapMessage);
+//			producer.send(mapMessage);
 		}
 	}
 

@@ -20,7 +20,8 @@ import org.junit.jupiter.api.Test;
 class JMSReceiver_Consumer {
 	public static final String USERNAME = ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
 	public static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码
-	public static final String BROKERURL = "tcp://192.168.241.110:61616";
+//	public static final String BROKERURL = "tcp://192.168.241.110:61616";
+	public static final String BROKERURL = "tcp://localhost:61616";
 	public static final String QUEUE_NAME = "testQueue";
 	public static final String TOPIC_NAME = "testTopic";
 	public static ActiveMQConnectionFactory factory;
@@ -115,7 +116,7 @@ class JMSReceiver_Consumer {
 	}
 
 	@Test
-	public void testListener1() throws JMSException, IOException {
+	public void testConsumerListener1() throws JMSException, IOException {
 		// 创建MQ并启动
 		start('q');
 		// 接收消息
@@ -125,7 +126,7 @@ class JMSReceiver_Consumer {
 	}
 
 	@Test
-	public void testListener2() throws JMSException, IOException {
+	public void testConsumerListener2() throws JMSException, IOException {
 		// 创建MQ并启动
 		start('t');
 		// 接收消息
@@ -135,7 +136,7 @@ class JMSReceiver_Consumer {
 	}
 
 	@Test
-	public void testNoListener() throws JMSException, IOException {
+	public void testConsumer() throws JMSException, IOException {
 		// 创建MQ并启动
 		start('q');
 		// 接收消息
