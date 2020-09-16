@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+Logs
 
 # BlueJ files
 *.ctxt
@@ -27,3 +28,4 @@ hs_err_pid*
 .settings
 target
 MANIFEST.MF
+.gitignore
