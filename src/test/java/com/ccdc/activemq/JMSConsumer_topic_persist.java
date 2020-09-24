@@ -1,7 +1,5 @@
 package com.ccdc.activemq;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import javax.jms.Connection;
 import javax.jms.JMSException;
 import javax.jms.Message;
