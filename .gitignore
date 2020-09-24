@@ -29,3 +29,5 @@ hs_err_pid*
 target
 MANIFEST.MF
 .gitignore
+activemq-data
+
