@@ -1,9 +1,7 @@
 package com.ccdc.activemq;
 
 import javax.jms.Connection;
-import javax.jms.DeliveryMode;
 import javax.jms.JMSException;
-import javax.jms.MapMessage;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
@@ -17,9 +15,9 @@ import org.junit.jupiter.api.Test;
 class JMSSender_Producer {
 	public static final String USERNAME = ActiveMQConnection.DEFAULT_USER; // 默认的连接用户名
 	public static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码
-//	public static final String BROKERURL = "tcp://192.168.241.110:61616";
-	public static final String BROKERURL = "tcp://localhost:61616";
-	public static final String QUEUE_NAME = "testQueue";
+	public static final String BROKERURL = "tcp://192.168.241.110:61616";
+//	public static final String BROKERURL = "tcp://localhost:61616";
+	public static final String QUEUE_NAME = "transport";
 	public static final String TOPIC_NAME = "testTopic";
 	public static ActiveMQConnectionFactory factory;
 	public static Connection connection = null;
